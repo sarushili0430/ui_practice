@@ -19,7 +19,7 @@ class _MyHomePageState extends State<AdminMobile> {
       children: [
         Container(
             decoration: BoxDecoration(
-                border: Border(right: BorderSide(color: Colors.black))),
+                border: Border(right: BorderSide(color: Colors.grey))),
             child: NavigationRail(
                 leading: Padding(
                     padding: EdgeInsets.only(bottom: 12.0),
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<AdminMobile> {
                 selectedIndex: _selectedindex)),
         Expanded(
             child: Container(
-          color: Colors.grey[300],
+          color: Colors.grey[450],
           child: Column(
             children: [
               Padding(
@@ -90,7 +90,12 @@ class PostStatus extends StatelessWidget {
               )),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text("Posts"), Text("$_posts Posts")],
+            children: [
+              Text(
+                "Posts",
+              ),
+              Text("$_posts Posts")
+            ],
           )
         ],
       ),
@@ -145,45 +150,59 @@ class MockCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+        elevation: 6.0,
         child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text("Pean"),
-            subtitle: Text("2 min ago")),
-        Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(width: 56),
-            Container(
-              width: 16,
-              height: 16,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.green, width: 4),
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            Text(
-              "Weak reason. No action required.",
-              style: TextStyle(fontSize: 12),
-            ),
-          ],
-        ),
-        Padding(
-            padding: EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text("Pean"),
+                subtitle: Text("2 min ago")),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Report Details",
+                SizedBox(width: 56),
+                Container(
+                  width: 16,
+                  height: 16,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green, width: 4),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-                Text("Archive"),
-                Text("Publish"),
+                Text(
+                  "Weak reason. No action required.",
+                  style: TextStyle(fontSize: 12),
+                ),
               ],
-            )),
-      ],
-    ));
+            ),
+            Padding(
+                padding: EdgeInsets.symmetric(vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      "Report Details",
+                      style: TextStyle(
+                          color: Colors.blueAccent,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.greenAccent),
+                    ),
+                    Text("Archive", style: TextStyle(color: Colors.blueAccent)),
+                    Container(
+                      height: 28,
+                      width: 72,
+                      color: Colors.lightGreen,
+                      child: Center(
+                          child: Text(
+                        "Publish",
+                        style: TextStyle(color: Colors.blueAccent),
+                      )),
+                    ),
+                  ],
+                )),
+          ],
+        ));
   }
 }
