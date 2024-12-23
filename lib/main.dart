@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ui_practice/routing.dart';
 import 'package:ui_practice/signin.dart';
+import 'package:go_router/go_router.dart';
 import 'admin_mobile.dart';
 
 const Color kAccentColor = Color(0xFFFE7C64);
@@ -20,13 +22,39 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerDelegate: goRouter.routerDelegate,
+      routeInformationParser: goRouter.routeInformationParser,
+      routeInformationProvider: goRouter.routeInformationProvider,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: kAccentColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
         useMaterial3: true,
       ),
-      home: const SigninSignout(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: true,
+    );
+  }
+}
+
+class UiNavigator extends StatelessWidget {
+  const UiNavigator({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+            onPressed: () {
+              context.go("/admin-mobile");
+            },
+            child: Text("Admin Mobile Page")),
+        ElevatedButton(
+            onPressed: () {
+              context.go("/signin");
+            },
+            child: Text("Signin Page")),
+      ],
     );
   }
 }

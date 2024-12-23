@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AdminMobile extends StatefulWidget {
-  const AdminMobile({super.key, required this.title});
-
-  final String title;
+  const AdminMobile({super.key});
 
   @override
   State<AdminMobile> createState() => _MyHomePageState();
@@ -22,8 +21,14 @@ class _MyHomePageState extends State<AdminMobile> {
                 border: Border(right: BorderSide(color: Colors.grey))),
             child: NavigationRail(
                 leading: Padding(
-                    padding: EdgeInsets.only(bottom: 12.0),
-                    child: Icon(Icons.format_quote_sharp)),
+                  padding: EdgeInsets.only(bottom: 12.0),
+                  child: IconButton(
+                    icon: Icon(Icons.format_quote_sharp),
+                    onPressed: () {
+                      context.go("/");
+                    },
+                  ),
+                ),
                 destinations: [
                   NavigationRailDestination(
                       icon: Icon(Icons.people),

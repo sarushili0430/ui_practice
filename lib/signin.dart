@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 const Color kAccentColor = Color(0xFFFE7C64);
 const Color kBackgroundColor = Color(0xFF19283D);
@@ -9,9 +10,7 @@ const Color kButtonTextColorPrimary = Color(0xFF455A64);
 const Color kIconColor = Color(0xFF455A64);
 
 class SigninSignout extends StatefulWidget {
-  const SigninSignout({super.key, required this.title});
-
-  final String title;
+  const SigninSignout({super.key});
 
   @override
   State<SigninSignout> createState() => _SigninSignoutState();
@@ -197,7 +196,9 @@ class HeaderBackButton extends StatelessWidget {
           side: BorderSide(color: kButtonColorPrimary),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        context.go("/");
+      },
       child: Icon(Icons.chevron_left, color: kIconColor),
     );
   }
